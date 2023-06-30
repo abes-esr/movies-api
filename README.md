@@ -1,2 +1,2 @@
-# movies-rp
-Configuration Docker du projet Movies-rp
+# movies-api
+Dépôt pour l'API Movies
