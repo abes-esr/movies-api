@@ -1,2 +1,2 @@
-# movies-wikibase
-Configuration Docker du projet Movies-Wikibase
+# movies-rp
+Configuration Docker du projet Movies-rp
