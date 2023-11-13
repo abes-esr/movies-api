@@ -7,13 +7,13 @@ PREFIX wd: <https://movies.abes.fr/entity/>
 PREFIX wikibase: <http://wikiba.se/ontology#>
 PREFIX bd: <http://www.bigdata.com/rdf#>
 
-select ?xLabel where {
+select ?orgLabel where {
     # instance d'organisation
-    ?x wdt:P1 wd:Q9 
-       
+    ?org wdt:P1 wd:Q9.
+    
     FILTER NOT EXISTS {
       # a pour propriété identifiant_paysage
-      ?x wdt:P36 ?y.
+      ?org wdt:P36 ?identifiant_paysage.
     }
   
     SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
