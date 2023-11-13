@@ -1,3 +1,5 @@
+#+ endpoint: https://movies.abes.fr/sparql/
+
 PREFIX wdt: <https://movies.abes.fr/prop/direct/>
 PREFIX wd: <https://movies.abes.fr/entity/>
 PREFIX wikibase: <http://wikiba.se/ontology#>
