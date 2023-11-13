@@ -8,9 +8,11 @@ PREFIX wikibase: <http://wikiba.se/ontology#>
 PREFIX bd: <http://www.bigdata.com/rdf#>
 
 select ?xLabel where {
+    # instance d'organisation
     ?x wdt:P1 wd:Q9 
        
     FILTER NOT EXISTS {
+      # a pour propriété identifiant_paysage
       ?x wdt:P36 ?y.
     }
   
