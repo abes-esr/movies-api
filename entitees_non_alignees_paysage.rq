@@ -1,4 +1,5 @@
 #+ endpoint: https://movies.abes.fr/proxy/wdqs/bigdata/namespace/wdq/sparql?
+#+ endpoint_in_url: False
 
 PREFIX wdt: <https://movies.abes.fr/prop/direct/>
 PREFIX wd: <https://movies.abes.fr/entity/>
