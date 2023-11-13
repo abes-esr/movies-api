@@ -1,0 +1,12 @@
+PREFIX wdt: <https://movies.abes.fr/prop/direct/>
+PREFIX wd: <https://movies.abes.fr/entity/>
+
+select ?xLabel where {
+    ?x wdt:P1 wd:Q9 
+       
+    FILTER NOT EXISTS {
+      ?x wdt:P36 ?y.
+    }
+  
+    SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+}
