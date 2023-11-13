@@ -1,0 +1,22 @@
+#+ endpoint: https://movies.abes.fr/proxy/wdqs/bigdata/namespace/wdq/sparql?
+#+ endpoint_in_url: False
+#+ description: Liste les organisations habilitées à délivrer le doctorat sans identifiant paysage
+
+PREFIX wdt: <https://movies.abes.fr/prop/direct/>
+PREFIX wd: <https://movies.abes.fr/entity/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX bd: <http://www.bigdata.com/rdf#>
+
+select ?orgLabel where {
+    # instance d'organisation
+    ?org wdt:P1 wd:Q9;
+       wdt:P6 ?habilitation.
+    
+       
+    FILTER NOT EXISTS {
+      # a pour propriété identifiant_paysage
+      ?org wdt:P36 ?identifiant_paysage.
+    }
+  
+    SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+}
