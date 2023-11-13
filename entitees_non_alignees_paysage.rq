@@ -1,6 +1,7 @@
 PREFIX wdt: <https://movies.abes.fr/prop/direct/>
 PREFIX wd: <https://movies.abes.fr/entity/>
 PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX bd: <http://www.bigdata.com/rdf#>
 
 select ?xLabel where {
     ?x wdt:P1 wd:Q9 
