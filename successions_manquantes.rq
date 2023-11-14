@@ -1,0 +1,25 @@
+#+ endpoint: https://movies.abes.fr/proxy/wdqs/bigdata/namespace/wdq/sparql?
+#+ endpoint_in_url: False
+#+ description: Liste successions manquantes. Les triplets retournés correspondent aux informations à ajouter.
+
+PREFIX wdt: <https://movies.abes.fr/prop/direct/>
+PREFIX wd: <https://movies.abes.fr/entity/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX bd: <http://www.bigdata.com/rdf#>
+
+SELECT ?predecesseur ?predecesseurLabel ?predicat ?successeur ?successeurLabel WHERE {
+  {
+    ?successeur wdt:P1 wd:Q9;
+      wdt:P42 ?predecesseur.
+    FILTER(NOT EXISTS { ?predecesseur wdt:P41 ?successeur. })
+    BIND("a pour prédécesseur" AS ?predicat)
+  }
+  UNION
+  {
+    ?predecesseur wdt:P1 wd:Q9;
+      wdt:P41 ?successeur.
+    FILTER(NOT EXISTS { ?successeur wdt:P42 ?predecesseur. })
+    BIND("a pour successeur" AS ?predicat)
+  }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+}
