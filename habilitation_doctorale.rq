@@ -9,8 +9,8 @@ PREFIX bd: <http://www.bigdata.com/rdf#>
 PREFIX p: <https://movies.abes.fr/prop/>
 PREFIX pq: <https://movies.abes.fr/prop/qualifier/>
 
-SELECT ?etabLabel ?code_etab ?debut ?fin WHERE {
-  ?etab wdt:P3 ?code_etab;
+SELECT ?etabLabel ?debut ?fin WHERE {
+  ?etab wdt:P3 ?_code_etab;
      p:P6 ?habiliatation.
   
   ?habiliatation pq:P4 ?debut.
