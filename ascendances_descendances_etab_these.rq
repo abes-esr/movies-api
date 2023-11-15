@@ -1,0 +1,18 @@
+PREFIX wdt: <https://movies.abes.fr/prop/direct/>
+PREFIX wd: <https://movies.abes.fr/entity/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX bd: <http://www.bigdata.com/rdf#>
+PREFIX p: <https://movies.abes.fr/prop/>
+PREFIX pq: <https://movies.abes.fr/prop/qualifier/>
+
+SELECT DISTINCT ?orgLabel ?code_etablissement WHERE {
+  ?etab wdt:P3 ?_code_etablissement.
+  
+  # recherche de manière récursive les déscendants et ascendants
+  ?etab (wdt:P42*/wdt:P41*) ?org.
+  
+  ?org wdt:P1 wd:Q9;
+       wdt:P3 ?code_etablissement.
+  
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+}
