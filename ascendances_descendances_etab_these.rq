@@ -10,7 +10,7 @@ PREFIX p: <https://movies.abes.fr/prop/>
 PREFIX pq: <https://movies.abes.fr/prop/qualifier/>
 
 SELECT DISTINCT ?orgLabel ?code_etablissement WHERE {
-  ?etab wdt:P3 "LYO1".
+  ?etab wdt:P3 ?_codeEtab.
 
   # recherche de manière récursive les déscendants et ascendants et l'établissement d'appartenance
   ?etab (wdt:P42*/wdt:P41*)* | wdt:P43 ?org.
