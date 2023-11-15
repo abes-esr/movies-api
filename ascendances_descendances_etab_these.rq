@@ -1,6 +1,6 @@
 #+ endpoint: https://movies.abes.fr/proxy/wdqs/bigdata/namespace/wdq/sparql?
 #+ endpoint_in_url: False
-#+ description: Liste les ascendants et les déscendants d'un établissement à partir de son code etablissement
+#+ description: Liste les ascendants et les déscendants d'un établissement à partir de son code etablissement. Recherche également le ou les établissements de ratachement (pour le premier établissement seulement)
 
 PREFIX wdt: <https://movies.abes.fr/prop/direct/>
 PREFIX wd: <https://movies.abes.fr/entity/>
@@ -10,13 +10,14 @@ PREFIX p: <https://movies.abes.fr/prop/>
 PREFIX pq: <https://movies.abes.fr/prop/qualifier/>
 
 SELECT DISTINCT ?orgLabel ?code_etablissement WHERE {
-  ?etab wdt:P3 ?_code_etablissement.
-  
-  # recherche de manière récursive les déscendants et ascendants
-  ?etab (wdt:P42*/wdt:P41*)* ?org.
+  ?etab wdt:P3 "LYO1".
+
+  # recherche de manière récursive les déscendants et ascendants et l'établissement d'appartenance
+  ?etab (wdt:P42*/wdt:P41*)* | wdt:P43 ?org.
   
   ?org wdt:P1 wd:Q9;
        wdt:P3 ?code_etablissement.
   
   SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
 }
+
