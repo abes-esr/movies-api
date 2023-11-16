@@ -13,7 +13,7 @@ SELECT ?etabLabel ?debut ?fin WHERE {
   ?etab wdt:P3 ?_codeEtab;
      p:P6 ?habiliatation.
   
-  ?habiliatation pq:P4 ?debut.
+  OPTIONAL {?habiliatation pq:P4 ?debut}.
   OPTIONAL {?habiliatation pq:P5 ?fin}.
   
   SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
