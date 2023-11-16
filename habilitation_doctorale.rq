@@ -1,3 +1,4 @@
+
 #+ endpoint: https://movies.abes.fr/proxy/wdqs/bigdata/namespace/wdq/sparql?
 #+ endpoint_in_url: False
 #+ description: Liste les habilitations doctorales d'un établissement
@@ -17,4 +18,6 @@ SELECT ?etabLabel ?debut ?fin WHERE {
   OPTIONAL {?habiliatation pq:P5 ?fin}.
   
   SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+
+  BIND( "" AS ?_format )
 }
