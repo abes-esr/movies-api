@@ -1,0 +1,5 @@
+#+ endpoint: https://query.wikidata.org/#
+
+SELECT * WHERE {
+  ?a ?b ?c.
+} LIMIT 100
