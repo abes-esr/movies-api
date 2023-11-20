@@ -1,6 +1,6 @@
 #+ endpoint: https://movies.abes.fr/proxy/wdqs/bigdata/namespace/wdq/sparql?
 #+ endpoint_in_url: False
-#+ description: Un établissement ne peut pas être le précesseur ou le successeur de lui même ce à n'importe quel degré
+#+ description: Un établissement ne peut pas être le précesseur ou le successeur de lui même et ce à n'importe quel degré
 
 PREFIX wdt: <https://movies.abes.fr/prop/direct/>
 PREFIX wd: <https://movies.abes.fr/entity/>
