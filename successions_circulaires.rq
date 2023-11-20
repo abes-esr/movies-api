@@ -1,0 +1,22 @@
+#+ endpoint: https://movies.abes.fr/proxy/wdqs/bigdata/namespace/wdq/sparql?
+#+ endpoint_in_url: False
+#+ description: Un établissement ne peut pas être le précesseur ou le successeur de lui même ce à n'importe quel degré
+
+PREFIX wdt: <https://movies.abes.fr/prop/direct/>
+PREFIX wd: <https://movies.abes.fr/entity/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX bd: <http://www.bigdata.com/rdf#>
+PREFIX p: <https://movies.abes.fr/prop/>
+PREFIX pq: <https://movies.abes.fr/prop/qualifier/>
+
+SELECT ?source ?target WHERE {
+  {
+    ?source (wdt:P41+) ?target.
+    FILTER(?source = ?target)
+  }
+  UNION
+  {
+    ?source (wdt:P42+) ?target.
+    FILTER(?source = ?target)
+  }
+}
