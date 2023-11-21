@@ -20,6 +20,6 @@ SELECT ?statement ?problem ?debut ?fin WHERE {
       pq:P5 ?fin.
     BIND("début > fin" AS ?problem)
   }
-  FILTER(?debut < ?fin)
+  FILTER(?debut > ?fin)
   SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
 }
