@@ -1,6 +1,0 @@
-#+ endpoint: https://query.wikidata.org/sparql?query=
-#+ endpoint_in_url: False
-
-SELECT * WHERE {
-  ?a ?b ?c.
-} LIMIT 100
