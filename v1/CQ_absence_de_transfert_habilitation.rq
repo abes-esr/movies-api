@@ -1,0 +1,24 @@
+#+ endpoint: https://movies.abes.fr/proxy/wdqs/bigdata/namespace/wdq/sparql?
+#+ endpoint_in_url: False
+#+ description: Lorsqu'un établissement a été habilité et qu'il disparait il faut explicitement saisir un transfert d'habilitation vers un ou plusieurs établissements.
+
+PREFIX wdt: <https://movies.abes.fr/prop/direct/>
+PREFIX wd: <https://movies.abes.fr/entity/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX bd: <http://www.bigdata.com/rdf#>
+PREFIX p: <https://movies.abes.fr/prop/>
+PREFIX pq: <https://movies.abes.fr/prop/qualifier/>
+
+
+SELECT ?org ?code_etablissement ?date_suppression ?erreur WHERE {
+   ?org wdt:P3 ?code_etablissement;
+        wdt:P11 ?date_suppression;                    # établissement disparu
+        wdt:P6 <https://movies.abes.fr/entity/Q8>.    # établissement ayant été habilité au moins une fois
+  
+   # absence de transfert
+   FILTER NOT EXISTS {
+     ?org  wdt:P6 <https://movies.abes.fr/entity/Q> # classes de l'habilitation transférée
+   }
+  
+  BIND("Rajoutez un transfert d'habilitation dont la date correspond à celle de suppression de l'établissement" AS ?erreur)
+} 
