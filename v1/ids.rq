@@ -12,7 +12,7 @@ PREFIX p: <https://movies.abes.fr/prop/>
 PREFIX pq: <https://movies.abes.fr/prop/qualifier/>
 
 SELECT * WHERE {
-  ?org wdt:P7 ?siren.
+  OPTIONAL {?org wdt:P7 ?siren.}
   OPTIONAL {?org wdt:P8 ?siren.}
   OPTIONAL {?org wdt:P30 ?code_uai.}
   OPTIONAL {?org wdt:P3 ?code_etab.}
