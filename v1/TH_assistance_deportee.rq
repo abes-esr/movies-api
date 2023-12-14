@@ -1,0 +1,19 @@
+PREFIX wdt: <https://movies.abes.fr/prop/direct/>
+PREFIX wd: <https://movies.abes.fr/entity/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX bd: <http://www.bigdata.com/rdf#>
+PREFIX p: <https://movies.abes.fr/prop/>
+PREFIX pq: <https://movies.abes.fr/prop/qualifier/>
+
+SELECT DISTINCT ?etabLabel ?_codeEtabSource ?codeEtabCible  WHERE {
+  ?etab wdt:P3 ?_codeEtabSource.
+
+  ?etab p:P6 ?hab. # Récupération de l'habilitation
+  	
+  ?hab <https://movies.abes.fr/prop/statement/P6> wd:Q475; # en cas de transfert
+       pq:P14 ?beneficiaire.
+  
+  ?beneficiaire wdt:P3 ?codeEtabCible.
+  
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+}
