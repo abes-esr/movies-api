@@ -1,3 +1,7 @@
+#+ endpoint: https://movies.abes.fr/proxy/wdqs/bigdata/namespace/wdq/sparql?
+#+ endpoint_in_url: False
+#+ description: Cette requête permet de trouver le ou les successeurs d'un établissement habilité à délivrer le doctorat
+
 PREFIX wdt: <https://movies.abes.fr/prop/direct/>
 PREFIX wd: <https://movies.abes.fr/entity/>
 PREFIX wikibase: <http://wikiba.se/ontology#>
