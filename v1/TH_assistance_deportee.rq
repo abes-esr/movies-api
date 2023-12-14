@@ -9,8 +9,9 @@ PREFIX bd: <http://www.bigdata.com/rdf#>
 PREFIX p: <https://movies.abes.fr/prop/>
 PREFIX pq: <https://movies.abes.fr/prop/qualifier/>
 
-SELECT DISTINCT ?etabLabel ?_codeEtabSource ?codeEtabCible  WHERE {
-  ?etab wdt:P3 ?_codeEtabSource.
+SELECT DISTINCT ?etabLabel ?codeEtabSource ?codeEtabCible  WHERE {
+  BIND(?_codeEtabSource AS ?codeEtabSource)
+  ?etab wdt:P3 ?codeEtabSource.
 
   ?etab p:P6 ?hab. # Récupération de l'habilitation
   	
