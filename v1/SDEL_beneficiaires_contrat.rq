@@ -10,6 +10,7 @@ PREFIX p: <https://movies.abes.fr/prop/>
 PREFIX pq: <https://movies.abes.fr/prop/qualifier/>
 PREFIX pqv: <https://movies.abes.fr/prop/qualifier/value/>
 PREFIX psv: <https://movies.abes.fr/prop/statement/value/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 SELECT DISTINCT ?beneficiairesLabel WHERE {
   ?contrat skos:altLabel ?label;
