@@ -11,17 +11,17 @@ PREFIX pq: <https://movies.abes.fr/prop/qualifier/>
 
 SELECT DISTINCT ?etab ?habiliatation ?probleme ?date ?date_habilitation WHERE {
   {
-    ?etab p:P6 ?habiliatation;
-      wdt:P10 ?date.
+    ?etab p:P22 ?habiliatation;
+      wdt:P10 ?date. # date de création
     
-    ?habiliatation pq:P4 ?date_habilitation.
+    ?habiliatation pq:P12 ?date_habilitation.
     BIND("Le début d'habilitation est inférieur à la date de création de l'établissement" AS ?probleme)
     FILTER(?date_habilitation < ?date)
   }
   UNION
   {
-    ?etab p:P6 ?habiliatation;
-      wdt:P11 ?date.
+    ?etab p:P22 ?habiliatation;
+      wdt:P54 ?date. # date de suppression
     
     ?habiliatation pq:P5 ?date_habilitation.
     BIND("La fin d'habilitation est supérieure à la date de suppression de l'établissement" AS ?probleme)
