@@ -1,4 +1,3 @@
-
 #+ endpoint: https://movies.abes.fr/proxy/wdqs/bigdata/namespace/wdq/sparql?
 #+ endpoint_in_url: False
 #+ description: Liste les habilitations doctorales échues
