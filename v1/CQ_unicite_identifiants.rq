@@ -14,19 +14,19 @@ SELECT ?identifiant ?problem (count(?identifiant) as ?count) WHERE {
     ?statement wdt:P36 ?identifiant.
     BIND("Indentifiant Paysage non unique" AS ?problem) 
   } UNION {
-    ?statement wdt:P35 ?identifiant.
+    ?statement wdt:P31 ?identifiant.
     BIND("Indentifiant Idref non unique" AS ?problem)
   } UNION {
-    ?statement wdt:P64 ?identifiant.
+    ?statement wdt:P23 ?identifiant.
     BIND("Indentifiant CNRS non unique" AS ?problem)
   } UNION {
-    ?statement wdt:P70 ?identifiant.
+    ?statement wdt:P33 ?identifiant.
     BIND("Indentifiant ISNI non unique" AS ?problem)
   } UNION {
-    ?statement wdt:P33 ?identifiant.
+    ?statement wdt:P40 ?identifiant.
     BIND("Indentifiant RNSR non unique" AS ?problem)
   } UNION {
-    ?statement wdt:P3 ?identifiant.
+    ?statement wdt:P9 ?identifiant.
     BIND("Indentifiant code établissement non unique" AS ?problem)
   }
 } GROUP BY ?identifiant ?problem
