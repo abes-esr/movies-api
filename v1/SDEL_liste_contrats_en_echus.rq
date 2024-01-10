@@ -1,0 +1,28 @@
+#+ endpoint: https://movies.abes.fr/proxy/wdqs/bigdata/namespace/wdq/sparql?
+#+ endpoint_in_url: False
+#+ description: Liste des contrats échus
+
+PREFIX wdt: <https://movies.abes.fr/prop/direct/>
+PREFIX wd: <https://movies.abes.fr/entity/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX bd: <http://www.bigdata.com/rdf#>
+PREFIX p: <https://movies.abes.fr/prop/>
+PREFIX pq: <https://movies.abes.fr/prop/qualifier/>
+PREFIX pqv: <https://movies.abes.fr/prop/qualifier/value/>
+PREFIX psv: <https://movies.abes.fr/prop/statement/value/>
+
+SELECT ?item ?itemLabel ?début ?fin
+WHERE 
+{
+  ?item wdt:P47 wd:Q10.
+  
+  OPTIONAL {
+   ?item p:P11/psv:P11/wikibase:timeValue ?début .
+  }
+          
+  ?item p:P19/psv:P19/wikibase:timeValue ?fin . # il faut qu'une date de fin d'application soit saisie pour que la requête fonctionne
+    
+  FILTER(?fin < NOW())
+
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+}
