@@ -9,16 +9,16 @@ PREFIX bd: <http://www.bigdata.com/rdf#>
 
 SELECT ?predecesseur ?predecesseurLabel ?predicat ?successeur ?successeurLabel WHERE {
   {
-    ?successeur wdt:P1 wd:Q9;
-      wdt:P42 ?predecesseur.
-    FILTER(NOT EXISTS { ?predecesseur wdt:P41 ?successeur. })
+    ?successeur wdt:P47 [wdt:P53* wd:Q8];
+      wdt:P4 ?predecesseur.
+    FILTER(NOT EXISTS { ?predecesseur wdt:P6 ?successeur. })
     BIND("a pour prédécesseur" AS ?predicat)
   }
   UNION
   {
-    ?predecesseur wdt:P1 wd:Q9;
-      wdt:P41 ?successeur.
-    FILTER(NOT EXISTS { ?successeur wdt:P42 ?predecesseur. })
+    ?predecesseur wdt:P47 [wdt:P53* wd:Q8];
+      wdt:P6 ?successeur.
+    FILTER(NOT EXISTS { ?successeur wdt:P4 ?predecesseur. })
     BIND("a pour successeur" AS ?predicat)
   }
   SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
