@@ -8,14 +8,15 @@ PREFIX wikibase: <http://wikiba.se/ontology#>
 PREFIX bd: <http://www.bigdata.com/rdf#>
 PREFIX p: <https://movies.abes.fr/prop/>
 PREFIX pq: <https://movies.abes.fr/prop/qualifier/>
+PREFIX psv: <https://movies.abes.fr/prop/statement/value/>
 
 SELECT ?statement ?problem (count(?c) as ?count) WHERE {
   {
-    ?statement wdt:P10 ?c.
+    ?statement psv:P10/wikibase:timeValue ?c.
     BIND("Plusieur dates de création" AS ?problem)
   } UNION {
-    ?statement wdt:P54 ?c.
+    ?statement psv:P54/wikibase:timeValue ?c.
     BIND("Plusieur dates de suppression" AS ?problem)
   }
 } GROUP BY ?statement ?problem
-HAVING (?count > 2) # > 2 car le format de date EDTF créer deux dates pour chaque statement !
+HAVING (?count > 1) # > 2 car le format de date EDTF créer deux dates pour chaque statement !
