@@ -11,14 +11,14 @@ PREFIX pq: <https://movies.abes.fr/prop/qualifier/>
 
 SELECT DISTINCT ?etabLabel ?codeEtabSource ?codeEtabCible  WHERE {
   BIND(?_codeEtabSource AS ?codeEtabSource)
-  ?etab wdt:P3 ?codeEtabSource.
+  ?etab wdt:P9 ?codeEtabSource.
 
-  ?etab p:P6 ?hab. # Récupération de l'habilitation
+  ?etab p:P22 ?hab. # Récupération de l'habilitation
   	
-  ?hab <https://movies.abes.fr/prop/statement/P6> wd:Q475; # en cas de transfert
-       pq:P14 ?beneficiaire.
+  ?hab <https://movies.abes.fr/prop/statement/P22> wd:Q20; # en cas de transfert
+       pq:P1 ?beneficiaire.
   
-  ?beneficiaire wdt:P3 ?codeEtabCible.
+  ?beneficiaire wdt:P9 ?codeEtabCible.
   
   SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
 }
