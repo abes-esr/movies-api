@@ -10,8 +10,8 @@ PREFIX p: <https://movies.abes.fr/prop/>
 PREFIX pq: <https://movies.abes.fr/prop/qualifier/>
 
 SELECT ?nom ?codeEtab WHERE {
-  ?etab wdt:P3 ?codeEtab;
-     wdt:P40 ?nom.
+  ?etab wdt:P9 ?codeEtab;
+     wdt:P48 ?nom.
     
   SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
 }
