@@ -11,12 +11,12 @@ PREFIX pq: <https://movies.abes.fr/prop/qualifier/>
 
 SELECT ?source ?target WHERE {
   {
-    ?source (wdt:P41+) ?target.
+    ?source (wdt:P6+) ?target.
     FILTER(?source = ?target)
   }
   UNION
   {
-    ?source (wdt:P42+) ?target.
+    ?source (wdt:P4+) ?target.
     FILTER(?source = ?target)
   }
 }
