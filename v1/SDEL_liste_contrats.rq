@@ -1,0 +1,27 @@
+#+ endpoint: https://movies.abes.fr/proxy/wdqs/bigdata/namespace/wdq/sparql?
+#+ endpoint_in_url: False
+#+ description: Liste des contrats
+
+PREFIX wdt: <https://movies.abes.fr/prop/direct/>
+PREFIX wd: <https://movies.abes.fr/entity/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX bd: <http://www.bigdata.com/rdf#>
+PREFIX p: <https://movies.abes.fr/prop/>
+PREFIX pq: <https://movies.abes.fr/prop/qualifier/>
+PREFIX pqv: <https://movies.abes.fr/prop/qualifier/value/>
+
+SELECT ?item ?itemLabel ?début ?fin
+WHERE 
+{
+  ?item wdt:P47 wd:Q10.
+  
+  OPTIONAL {
+   ?item pqv:P12/wikibase:timeValue ?début 
+         
+  }
+  OPTIONAL {
+   ?item pqv:P20/wikibase:timeValue ?fin
+  }
+
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+}
