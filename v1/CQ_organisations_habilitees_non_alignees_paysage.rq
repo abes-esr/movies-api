@@ -8,10 +8,8 @@ PREFIX wikibase: <http://wikiba.se/ontology#>
 PREFIX bd: <http://www.bigdata.com/rdf#>
 
 select ?orgLabel where {
-    # instance d'organisation
-    ?org wdt:P1 wd:Q9;
-       wdt:P6 ?habilitation.
-    
+    # établissement ayant une habilitation
+    ?org wdt:P22 ?habilitation.
        
     FILTER NOT EXISTS {
       # a pour propriété identifiant_paysage
