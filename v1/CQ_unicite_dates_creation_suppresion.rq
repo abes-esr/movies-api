@@ -14,8 +14,8 @@ SELECT ?statement ?problem (count(?c) as ?count) WHERE {
     ?statement wdt:P10 ?c.
     BIND("Plusieur dates de création" AS ?problem)
   } UNION {
-    ?statement wdt:P11 ?c.
+    ?statement wdt:P54 ?c.
     BIND("Plusieur dates de suppression" AS ?problem)
   }
 } GROUP BY ?statement ?problem
-HAVING (?count > 1)
+HAVING (?count > 2) # > 2 car le format de date EDTF créer deux dates pour chaque statement !
