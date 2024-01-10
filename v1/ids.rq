@@ -8,6 +8,7 @@ PREFIX wikibase: <http://wikiba.se/ontology#>
 PREFIX bd: <http://www.bigdata.com/rdf#>
 PREFIX p: <https://movies.abes.fr/prop/>
 PREFIX pq: <https://movies.abes.fr/prop/qualifier/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 SELECT ?org ?ids WHERE {
   ?org skos:altLabel ?id.
