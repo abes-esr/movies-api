@@ -1,6 +1,7 @@
 #+ endpoint: https://movies.abes.fr/proxy/wdqs/bigdata/namespace/wdq/sparql?
 #+ endpoint_in_url: False
 #+ description: Liste les bénéficiaires d'un contrat à partir de son identifiant (ce sont les alias qui sont utilisés pour retrouver le contrat.
+
 PREFIX wdt: <https://movies.abes.fr/prop/direct/>
 PREFIX wd: <https://movies.abes.fr/entity/>
 PREFIX wikibase: <http://wikiba.se/ontology#>
