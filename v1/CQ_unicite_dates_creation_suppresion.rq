@@ -19,4 +19,4 @@ SELECT ?statement ?problem (count(?c) as ?count) WHERE {
     BIND("Plusieur dates de suppression" AS ?problem)
   }
 } GROUP BY ?statement ?problem
-HAVING (?count > 1) # > 2 car le format de date EDTF créer deux dates pour chaque statement !
+HAVING (?count > 1)
