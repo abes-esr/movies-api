@@ -10,14 +10,13 @@ PREFIX p: <https://movies.abes.fr/prop/>
 PREFIX pq: <https://movies.abes.fr/prop/qualifier/>
 
 SELECT DISTINCT ?orgLabel ?code_etablissement WHERE {
-  ?etab wdt:P3 ?_codeEtab.
+  ?etab wdt:P9 ?_codeEtab.
 
   # recherche de manière récursive les déscendants et ascendants et l'établissement d'appartenance
-  ?etab (wdt:P42*/wdt:P41*)* | wdt:P43 ?org.
+  ?etab (wdt:P6*/wdt:P4*)* | wdt:P17 ?org.
   
-  ?org wdt:P1 wd:Q9;
-       wdt:P3 ?code_etablissement.
+  ?org wdt:P47 [wdt:P53* wd:Q8];
+       wdt:P9 ?code_etablissement.
   
   SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
 }
-
