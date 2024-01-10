@@ -14,6 +14,8 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 SELECT DISTINCT ?beneficiairesLabel WHERE {
   ?contrat skos:altLabel ?label;
+
+  BIND(?_id as ?x) # utilisé exclusivement pour rentre le paramètre visible par GRLC
            
   FILTER(STR(?label) = ?_id)
   
