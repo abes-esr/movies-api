@@ -9,12 +9,11 @@ PREFIX bd: <http://www.bigdata.com/rdf#>
 PREFIX p: <https://movies.abes.fr/prop/>
 PREFIX pq: <https://movies.abes.fr/prop/qualifier/>
 
-SELECT DISTINCT ?etabLabel ?codeEtabSource ?codeEtabCible  WHERE {
-  BIND(?_codeEtabSource AS ?codeEtabSource)
-  ?etab wdt:P9 ?codeEtabSource.
+SELECT DISTINCT ?etabLabel ?codeEtabCible  WHERE {
+  ?etab wdt:P9 ?_codeEtab.
 
   ?etab p:P22 ?hab. # Récupération de l'habilitation
-  	
+    
   ?hab <https://movies.abes.fr/prop/statement/P22> wd:Q20; # en cas de transfert
        pq:P1 ?beneficiaire.
   
@@ -22,3 +21,4 @@ SELECT DISTINCT ?etabLabel ?codeEtabSource ?codeEtabCible  WHERE {
   
   SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
 }
+
