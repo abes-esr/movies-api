@@ -8,13 +8,15 @@ PREFIX wikibase: <http://wikiba.se/ontology#>
 PREFIX bd: <http://www.bigdata.com/rdf#>
 PREFIX p: <https://movies.abes.fr/prop/>
 PREFIX pq: <https://movies.abes.fr/prop/qualifier/>
+PREFIX pqv: <https://movies.abes.fr/prop/qualifier/value/>
 
-SELECT ?etabLabel ?codeEtab ?debut WHERE {
-  ?etab wdt:P3 ?codeEtab;
-     p:P6 ?habiliatation.
+SELECT ?etabLabel ?debut ?fin WHERE {
+  ?etab wdt:P9 ?codeEtab;
+     p:P22 ?habiliatation;
+     wdt:P22 wd:Q19.
   
-  OPTIONAL {?habiliatation pq:P4 ?debut}.
-  FILTER NOT EXISTS { ?habiliatation pq:P5 ?fin }.
+  OPTIONAL {?habiliatation pqv:P12/wikibase:timeValue ?debut.}
+  FILTER NOT EXISTS { ?habiliatation pqv:P20/wikibase:timeValue ?fin }.
   
   SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
 }
