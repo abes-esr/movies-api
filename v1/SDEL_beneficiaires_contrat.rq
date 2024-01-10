@@ -1,0 +1,36 @@
+#+ endpoint: https://movies.abes.fr/proxy/wdqs/bigdata/namespace/wdq/sparql?
+#+ endpoint_in_url: False
+#+ description: Liste les bénéficiaires d'un contrat à partir de son identifiant (ce sont les alias qui sont utilisés pour retrouver le contrat.
+PREFIX wdt: <https://movies.abes.fr/prop/direct/>
+PREFIX wd: <https://movies.abes.fr/entity/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX bd: <http://www.bigdata.com/rdf#>
+PREFIX p: <https://movies.abes.fr/prop/>
+PREFIX pq: <https://movies.abes.fr/prop/qualifier/>
+PREFIX pqv: <https://movies.abes.fr/prop/qualifier/value/>
+PREFIX psv: <https://movies.abes.fr/prop/statement/value/>
+
+SELECT DISTINCT ?beneficiairesLabel WHERE {
+  ?contrat skos:altLabel ?label;
+           
+  FILTER(STR(?label) = ?_id)
+  
+  { SELECT ?ben WHERE { ?contrat wdt:P5 ?ben. } } # Signataires
+  UNION
+  { SELECT ?ben WHERE { ?contrat wdt:P1 ?ben. } } # Bénéficiaires
+  {
+    SELECT * WHERE {
+      { FILTER(NOT EXISTS { ?ben wdt:P54 ?date_suppression. }) } # Bénéficiaires directs toujours en vie (qui n'a pas de date de mort)
+      UNION
+      {
+        ?ben wdt:P54 ?date_suppression; # Héritiers des bénéficiaires morts (qui a une date de mort)
+          wdt:P6+ ?successeur. # successeurs ou successeurs des successeurs, etc.
+         FILTER(NOT EXISTS { ?successeur wdt:P54 ?date_suppression. }) # On enlève les héritiers morts
+        
+        BIND(?successeur AS ?beneficiaires_indirects)
+      }
+    }
+  }
+  BIND(IF(BOUND(?beneficiaires_indirects), ?beneficiaires_indirects, ?ben) AS ?beneficiaires)
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+}
