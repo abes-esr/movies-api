@@ -2,13 +2,12 @@
 #+ endpoint_in_url: False
 #+ description: Liste des établissements avec leur url de la fédération d'identité
 
-PREFIX wdt: https://movies.abes.fr/prop/direct/
-PREFIX wd: https://movies.abes.fr/entity/
-PREFIX wikibase: http://wikiba.se/ontology#
-PREFIX bd: http://www.bigdata.com/rdf#
-PREFIX p: https://movies.abes.fr/prop/
-PREFIX pq: https://movies.abes.fr/prop/qualifier/
-PREFIX pqv: https://movies.abes.fr/prop/qualifier/value/
+PREFIX wdt: <https://movies.abes.fr/prop/direct/>
+PREFIX wd: <https://movies.abes.fr/entity/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX bd: <http://www.bigdata.com/rdf#>
+PREFIX p: <https://movies.abes.fr/prop/>
+PREFIX pq: <https://movies.abes.fr/prop/qualifier/>
 
 SELECT ?etabLabel ?codeEtab ?idpRenater ?ppn WHERE {
   ?etab wdt:P9 ?codeEtab;
