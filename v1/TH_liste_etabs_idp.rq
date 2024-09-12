@@ -14,5 +14,5 @@ SELECT ?etabLabel ?codeEtab ?idpRenater ?ppn WHERE {
      wdt:P63 ?idpRenater;
      wdt:P31 ?ppn.
   
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],fr". }
 }
