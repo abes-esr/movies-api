@@ -1,6 +1,6 @@
 #+ endpoint: https://movies.abes.fr/proxy/wdqs/bigdata/namespace/wdq/sparql?
 #+ endpoint_in_url: False
-#+ description: Liste des établissements avec leur url de la fédération d'identité
+#+ description: Liste des établissements avec leur url de la fédération d'identité. Utilisée par le middleware EZStats : https://github.com/abes-esr/ezstats-docker/tree/develop/ezpaarse-init/middlewares/thesesfr-idp
 
 PREFIX wdt: <https://movies.abes.fr/prop/direct/>
 PREFIX wd: <https://movies.abes.fr/entity/>
