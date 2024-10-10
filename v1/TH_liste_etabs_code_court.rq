@@ -10,7 +10,8 @@ PREFIX bd: <http://www.bigdata.com/rdf#>
 PREFIX p: <https://movies.abes.fr/prop/>
 PREFIX pq: <https://movies.abes.fr/prop/qualifier/>
 
-SELECT ?codeEtab ?ppn WHERE {
-  ?etab wdt:P9 ?codeEtab;
+SELECT ?codeCourt ?ppn WHERE {
+  ?etab wdt:P9 ?codeCourt;
      wdt:P31 ?ppn.
 }
+ORDER BY ?codeCourt
