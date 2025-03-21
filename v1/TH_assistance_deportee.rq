@@ -12,17 +12,9 @@ PREFIX pq: <https://movies.abes.fr/prop/qualifier/>
 SELECT DISTINCT ?codeEtab ?codeEtabCible WHERE {
   ?etab wdt:P9 ?_codeEtab.
   
-  # On renvoie le code etab si il est présent dans la base. (En cas de mauvais code etab ça peut servir).
   ?etab wdt:P9 ?codeEtab. 
   
-  # Cas de figure 1 : L’établissement A est habilité en propre à délivrer le doctorat.
-  # Ex (au 21/03/25) :  BORD est habilité à délivrer le doctorat.
-  
-  # Cas de figure 2 : L’établissement A est remplacé par l’établissement B. L’établissement A disparaît et transfère son habilitation doctorale à l’établissement B (est bénéficiaire de).
-  # Ex (au 21/03/25) :  STR1 a disparu et a transféré son habilitation doctorale à STRA.
-  
-  # Cas de figure 6 : L'établissement A a disparu et a transféré son habilitation doctorale à plusieurs établissements B, C et D (il y a donc plusieurs bénéficiaires). C’est le cas des scissions d'établissements.
-  # Ex (au 21/03/25) : LYSE a transféré son habilitation doctorale à LYO1, LYO2, LYO3, STET, ISAL, ENSL, ECDL, EMSE, ENTP
+  # Cas de figure 1, 2 et 6 
   OPTIONAL {
     ?etab p:P22 ?hab. # Récupération de l'habilitation
       
@@ -35,11 +27,7 @@ SELECT DISTINCT ?codeEtab ?codeEtabCible WHERE {
     ?etabCible wdt:P9 ?codeEtabCible.
   }
   
-  # Cas de figure 3 : L’établissement A reste en vie, mais délègue son habilitation doctorale à l’établissement B (est délégataire de).
-  # Ex (au 21/03/25) : EVRY délègue son habilitation doctorale à UPAS.
-  
-  # Cas de figure 5 : L’établissement A a délégué son habilitation doctorale à l’établissement B (est délégataire de) puis a transféré son habilitation à l’établissement C (est bénéficiaire de)
-  # Ex (au 21/03/25) : DIJO a délégué son habilitation doctorale à UBFC puis a transféré son habilitation doctorale à UBEU.
+  # Cas de figure 3 et 5
   OPTIONAL {
     ?etab p:P22 ?hab. # Récupération de l'habilitation
       
@@ -52,9 +40,7 @@ SELECT DISTINCT ?codeEtab ?codeEtabCible WHERE {
     ?etabCible wdt:P9 ?codeEtabCible.         
   }
   
-  # Cas de figure 4 : L’établissement A est remplacé par l’établissement B. L’établissement A disparaît et transfère son habilitation doctorale à l’établissement B (est bénéficiaire de). 
-  # MAIS, l’établissement B disparaît lui aussi et transfère son habilitation doctorale à l’établissement C (est bénéficiaire de).
-  # Ex (au 21/03/25) : GREN a transféré son habilitation doctorale à GREA qui a transféré son habilitation doctorale à GRAL.
+  # Cas de figure 4
   OPTIONAL {
     ?etab p:P22 ?hab. # Récupération de l'habilitation
       
