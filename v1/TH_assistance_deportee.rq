@@ -39,7 +39,9 @@ SELECT DISTINCT ?ppnEtab ?ppnEtabCible WHERE {
     ?hab <https://movies.abes.fr/prop/statement/P22> wd:Q20; # en cas de transfert
          pq:P1 ?beneficiaire.
 
-    ?beneficiaire wdt:P54 ?date_suppression.
+    OPTIONAL {
+      ?beneficiaire wdt:P54 ?date_suppression.
+    }
     
     OPTIONAL {
     ?beneficiaire p:P22 ?hab2. # Récupération de l'habilitation
